@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gym Maths</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-5.15.2-web/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        .field {
+            margin-bottom: .75rem !important;
+        }
+
+        .container {
+            position: relative;
+            min-height: 70vh;
+        }
+
+        #editSettingsBtn {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 2.5em;
+        }
+
+        .weight {
+            display: inline-block;
+            width: 5em;
+            height: 5em;
+            border-radius: 50%;
+            border: 9px double #5d5b5b;
+            font-size: 20px;
+            color: #666;
+            line-height: 6.5em;
+            text-align: center;
+            text-decoration: none;
+            background: #a7a7a7;
+            position: relative;
+        }
+
+        .weight:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 1em;
+            height: 1em;
+            top: 50%;
+            margin-left: -.5em;
+            margin-top: -.5em;
+            border-radius: 50%;
+            background-color: #3298dc;
+            box-shadow: 0px 0px 0px 4px #5d5b5b;
+        }
+
+        .w2 {
+            transform: scale(0.9);
+            transform-origin: left bottom;
+            margin-bottom: -0.5em;
+            margin-right: -0.5em;
+        }
+
+        .w3 {
+            transform: scale(0.8);
+            transform-origin: left bottom;
+            margin-bottom: -1em;
+            margin-right: -1em;
+        }
+
+        .w4 {
+            transform: scale(0.7);
+            transform-origin: left bottom;
+            margin-bottom: -1.5em;
+            margin-right: -1.5em;
+        }
+
+        .w5 {
+            transform: scale(0.6);
+            transform-origin: left bottom;
+            margin-bottom: -2em;
+            margin-right: -2em;
+        }
+
+        .w6 {
+            transform: scale(0.5);
+            transform-origin: left bottom;
+            margin-bottom: -2.5em;
+            margin-right: -2.5em;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Gym Maths
+            </h1>
+            <p class="subtitle">
+                <i>For <strong>less 🧠 </strong>and <strong>more 💪</strong>!</i>
+            </p>
+                <a id="editSettingsBtn" class="button is-pulled-right" href="#settings">
+                    <i class="fas fa-cog"></i>
+                </a>
+                <div id="settings" style="display:none;">
+                    <div class="field">
+                        <label class="label">Gym Name</label>
+                        <div class="control">
+                            <input id="GymName" class="input" type="text" placeholder="Gym Name" style="width:175px;">
+                        </div>
+                        <p id="error" class="help is-danger" style="display:none;">You must enter a gym name.</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Weight Units</label>
+                        <div class="control buttons has-addons">
+                            <button class="button is-selected" disabled>lbs</button>
+                            <button class="button">kgs</button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Bar Weight</label>
+                        <div class="control">
+                            <input id="BarWeight" class="input" type="number" value="0" min="0" placeholder="Bar weight" style="width:100px;">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">45lb Plates</label>
+                        <div class="control">
+                            <button class="button is-large" onclick="weightQuantityBtn(this,false);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <input id="Weight1" class="input is-large" type="number" value="0" min="0" style="width:62px;text-align:center;" readonly>
+                            <button class="button is-large" onclick="weightQuantityBtn(this,true);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">35lb Plates</label>
+                        <div class="control">
+                            <button class="button is-large" onclick="weightQuantityBtn(this,false);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <input id="Weight2" class="input is-large" type="number" value="0" min="0" style="width:62px;text-align:center;" readonly>
+                            <button class="button is-large" onclick="weightQuantityBtn(this,true);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">25lb Plates</label>
+                        <div class="control">
+                            <button class="button is-large" onclick="weightQuantityBtn(this,false);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <input id="Weight3" class="input is-large" type="number" value="0" min="0" style="width:62px;text-align:center;" readonly>
+                            <button class="button is-large" onclick="weightQuantityBtn(this,true);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">10lb Plates</label>
+                        <div class="control">
+                            <button class="button is-large" onclick="weightQuantityBtn(this,false);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <input id="Weight4" class="input is-large" type="number" value="0" min="0" style="width:62px;text-align:center;" readonly>
+                            <button class="button is-large" onclick="weightQuantityBtn(this,true);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">5lb Plates</label>
+                        <div class="control">
+                            <button class="button is-large" onclick="weightQuantityBtn(this,false);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <input id="Weight5" class="input is-large" type="number" value="0" min="0" style="width:62px;text-align:center;" readonly>
+                            <button class="button is-large" onclick="weightQuantityBtn(this,true);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">2.5lb Plates</label>
+                        <div class="control">
+                            <button class="button is-large" onclick="weightQuantityBtn(this,false);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <input id="Weight6" class="input is-large" type="number" value="0" min="0" style="width:62px;text-align:center;" readonly>
+                            <button class="button is-large" onclick="weightQuantityBtn(this,true);">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-info" onclick="saveSettings(this);">
+                                    Save Settings
+                                </button>
+                            </div>
+                        </div>
+        </div>
+        <div id="app" class="notification is-primary">
+            <div class="field">
+                <label class="label">Required Weight</label>
+                <div class="control">
+                    <input id="requiredWeight" class="input" type="number" placeholder="Required Weight" style="width:175px;">
+                    <button class="button" onclick="findCombos();">Enter</button>
+                </div>
+            </div>
+            <div id="output"></div>
+
+        </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Gym Maths</strong> is made with ❤️ by Stevie.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
