@@ -200,13 +200,13 @@ function findCombos(){
 			}
 		}
 	} else {
-		//handle error ?
+		console.log("No required weight");
 	}
 }
 
 function displayCombos(combos, requiredWeight){
 		let outputElement = document.getElementById("output");
-		outputElement.innerHTML = '<strong class="has-text-dark">All possible combinations of plates on one side of the bar to equal '+requiredWeight+':</strong>';
+		outputElement.innerHTML = '<strong class="has-text-dark">You could put any of these combinations on each side of the bar to equal '+requiredWeight+':</strong>';
 		let i = 0, j = 0;
 		for(i = 0; i < combos.length; i++){
 			let output = '<div class="notification is-info">';
