@@ -1,5 +1,6 @@
 # Gym Maths :muscle:
-A web app useful in home gyms to calculate the plate combinations that add up to a desired weight on a barbell.
+A website useful in home gyms to calculate the plate combinations that add up to a desired weight on a barbell.
+https://steviegalluscio.github.io/GymMaths/
 
 <kbd>![demo](demo.gif) </kbd>
 
